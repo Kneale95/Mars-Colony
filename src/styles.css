@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background:
+    url(https://images3.alphacoders.com/677/677271.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: center bottom;
+}

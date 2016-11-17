@@ -1,3 +1,17 @@
-<p>
-  report works!
-</p>
+
+<h1>Report Encounter</h1>
+
+<h3>Safety on Mars is your responsibity</h3> 
+
+<form [formGroup]="reportForm" class="report" >
+
+  <select name="type" class="job" required >
+    <option [value]="NO_ALIEN_SELECTED">Select Alien Type</option>
+    <option *ngFor="let alien of marsAliens" [value]="alien.type">{{ alien.type }}</option>
+  </select>
+
+  <input type="textarea"  class="name" placeholder="Action Taken"  name= 'action'>
+
+  <button>Submit Report</button>
+
+</form>
