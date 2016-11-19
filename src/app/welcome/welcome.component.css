@@ -1,6 +1,79 @@
+@keyframes pulse_animation {
+	0% { transform: scale(1); }
+	30% { transform: scale(1); }
+	40% { transform: scale(1.08); }
+	50% { transform: scale(1); }
+	60% { transform: scale(1); }
+	70% { transform: scale(1.05); }
+	80% { transform: scale(1); }
+	100% { transform: scale(1); }
+}
+
+.pulse {
+	animation-name: pulse_animation;
+	animation-duration: 2000ms;
+	transform-origin:70% 70%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@font-face {
+  font-family: 'Sayian';
+  src:  url('../assets/Sayian-San/saiyan-sans-webfont.woff2') format('woff2'),
+        url('../assets/Sayian-San/saiyan-sans-webfont.woff') format('woff');
+}
+
 h1{
+    padding-top: 4rem;
     text-align: center;
     font-size: 2rem;
-    margin-top:4rem;
     text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h2{
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* the home page*/
+.welcome-page{
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5), 
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(https://images3.alphacoders.com/677/677271.png);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+/* making the image go to the center */
+.home-button-wrapper{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 70vh;
+}
+
+/* the home page button image */
+.home-button{
+    width:200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 100px;
+    background: url(http://karlmac.com/wp-content/uploads/2011/08/4-star-dragonball.png);
+    background-position: center bottom;
+    background-size: cover;
+}
+
+/*the home page link*/
+a{
+    align-self: center;
 }

@@ -1,19 +1,19 @@
 <section class="register-body">
 
 <h2>Register</h2>
+<div class= 'container'>
+  <form [formGroup]="registerForm" class="register">
 
-<form [formGroup]="registerForm" class="register">
+    <input type="text"  class="name" placeholder="name" formControlName= 'name'>
+    <input type="number" class="age" placeholder="age"  formControlName= 'age'>
+    
+    <select formControlName="job_id"   class="job" required >
+      <option [value]="NO_JOB_SELECTED">Select a Job</option>
+      <option *ngFor="let job of marsJobs" [value]="job.id">{{ job.name }}</option>
+    </select>
 
-  <input type="text"  class="name" placeholder="name" formControlName= 'name'>
-  <input type="number" class="age" placeholder="age"  formControlName= 'age'>
-  
-  <select formControlName="job_id"   class="job" required >
-    <option>Select a Job</option>
-    <option *ngFor="let job of marsJobs" [value]="job.id">{{ job.name }}</option>
-  </select>
+    <a routerLink="/encounters" routerLinkActive="active"class="button"><button>Check In</button></a>
 
-  <button>Check In</button>
-
-</form>
-
+  </form>
+</div>
 </section>

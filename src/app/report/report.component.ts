@@ -1,27 +1,32 @@
+import { Validator, Validators } from '@angular/forms';
 import { formControlBinding } from '@angular/forms/src/directives/reactive_directives/form_control_directive';
 import { TEMPLATE_TRANSFORMS } from '@angular/compiler';
 import { format } from 'util';
 import { Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
-import { Aliens, Encounter } from '../models';
+import { Aliens, Encounter, NewEncounter } from '../models';
 import AliensService from '../services/encounters.service';
+import EncountersService from '../services/aliens.service';
+import {FormGroup, FormControl, FormBuilder,AbstractControl } from '@Angular/forms';
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css'],
-  providers: [AliensService],
+  providers: [AliensService, EncountersService],
   
 })
 
 export class ReportComponent implements OnInit {
-  aliens: Aliens;
+
   marsAliens: Aliens[];
-  NO_ALIENS_SELECTED = "(none)";
-  encounter: Encounter
+  reportForm: FormGroup;
+  NO_ALIENS_SELECTED = '(none)';
+
   
 
-  constructor(aliensService: AliensService) {
-    this.encounter = new Encounter(null,null,null,null,null);
+  constructor(private aliensService:AliensService, 
+              private encountersService:EncountersService) {
+
   
 
   aliensService.getAliens().subscribe((aliens) => {
@@ -32,13 +37,29 @@ export class ReportComponent implements OnInit {
   );}
   
   ngOnInit() {
+    this.reportForm = new FormGroup({
+      atype: new FormControl(this.NO_ALIENS_SELECTED,[]),
+      action: new FormControl('',[Validators.required,Validators.maxLength(450)])
+    });
   }
-  get aliensSelected (){
-    return this.aliens.type !== this.NO_ALIENS_SELECTED
-  }
-  onSubmit(event,reportForm){
+
+
+private getDate(){
+  const date = new Date();
+  return '$(date.getFullYear()}-$(date.getMonth() +1}-$(date.getDate)}';
+}
+  onSubmit(event){
     event.preventDefault();
-   reportForm.form.controls.name.invalid=true;
-    
+    const date = this.getDate();
+    const atype = this.reportForm.get('atype').value;
+    const action = this.reportForm.get('action').value;
+    const encounter = new NewEncounter(date,atype,action,'4');
+   
+ this.encountersService.submitEncounter(encounter)
+ .subscribe((enc) => {
+    console.log('got encounter',enc);
+  }, (err) =>{
+    console.log('there was an error',err);
+ });
   }
 }

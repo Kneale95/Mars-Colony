@@ -1,5 +1,5 @@
 import { ValidatorFn } from '@angular/forms';
-
+import {cantBe} from '../shared/Validators';
 import { formControlBinding } from '@angular/forms/src/directives/reactive_directives/form_control_directive';
 import { TEMPLATE_TRANSFORMS } from '@angular/compiler';
 import { format } from 'util';
@@ -9,12 +9,7 @@ import { NewColonists, Job } from '../models';
 import JobsService from '../services/jobs.service';
 import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@Angular/forms';
 
- function cantBe  (value: string): ValidatorFn{
-   return (control: AbstractControl): {[key: string]: any}  => {
-     return control.value === value ? {'cant be value': { value }} : null;
-   };
- }
- 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -53,9 +48,17 @@ export class RegisterComponent implements OnInit {
   get jobSelected (){
     return this.colonists.job_id !== this.NO_JOB_SELECTED
   }
-  onSubmit(event,registerForm){
+  onSubmit(event){
     event.preventDefault();
-   registerForm.form.controls.name.invalid=true;
+    console.log(this.registerForm.invalid);
+    if(this.registerForm.invalid){
+
+    } else {
+      const name = this.registerForm.get('name').value;
+      const age = this.registerForm.get('age').value;
+      const job_id = this.registerForm.get('job_id').value;
+      console.log('ok, lets register this new colonist', new NewColonists(name,age,job_id));
+    }
     
   
   }

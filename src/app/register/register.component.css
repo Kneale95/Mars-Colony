@@ -1,36 +1,61 @@
+
 h2{
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
+    color: white;
 }
 
 button{
     border: none;
     background: transparent;
     font-size: 2rem;
-    flex: 1 0 100%
+    flex: 1 0 100%;
+    align-self: center;
 }
 
+.register-body{
+    background:linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),url('http://static4.comicvine.com/uploads/original/14/147020/4896786-7723851337-Drago.png');
+    background-size: cover;
+    background-position: center bottom;
+    height: 100vh;
+}
 .register{
     display:flex;
     max-width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
     
 }
 
 .name{
     flex:1 0 100%;
     margin-bottom: 20px;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left:none;
     
 }
 
 .age{
     flex: 1 0 100%;
     margin-bottom: 20px;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left:none;
 }
 
 .job{
     flex: 1 0 100%;
     margin-bottom: 4rem;   
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left:none;
 }
 
