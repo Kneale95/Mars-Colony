@@ -4,6 +4,7 @@ h2{
     font-size: 2rem;
     margin-bottom: 2rem;
     color: white;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 button{
@@ -12,6 +13,8 @@ button{
     font-size: 2rem;
     flex: 1 0 100%;
     align-self: center;
+    color: white;
+    font-family:'Titillium Web', sans-serif;
 }
 
 .register-body{
@@ -58,4 +61,3 @@ button{
     border-right: none;
     border-left:none;
 }
-

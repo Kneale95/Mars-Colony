@@ -6,7 +6,7 @@
 
   <form [formGroup]="reportForm" class="report" >
 
-    <select formControlName='atype' class="job" required >
+    <select formControlName='atype' class="alien" required >
       <option [value]="NO_ALIENS_SELECTED">Select Alien Type</option>
       <option *ngFor="let alien of marsAliens" [value]="alien.type">{{ alien.type }}</option>
     </select>

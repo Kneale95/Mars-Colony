@@ -5,9 +5,12 @@ import { format } from 'util';
 import { Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { Aliens, Encounter, NewEncounter } from '../models';
+import {cantBe} from '../shared/validators'; 
 import AliensService from '../services/encounters.service';
 import EncountersService from '../services/aliens.service';
 import {FormGroup, FormControl, FormBuilder,AbstractControl } from '@Angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -25,7 +28,8 @@ export class ReportComponent implements OnInit {
   
 
   constructor(private aliensService:AliensService, 
-              private encountersService:EncountersService) {
+              private encountersService:EncountersService,
+              private router: Router) {
 
   
 
@@ -38,7 +42,7 @@ export class ReportComponent implements OnInit {
   
   ngOnInit() {
     this.reportForm = new FormGroup({
-      atype: new FormControl(this.NO_ALIENS_SELECTED,[]),
+      atype: new FormControl(this.NO_ALIENS_SELECTED,[cantBe(this.NO_ALIENS_SELECTED)]),
       action: new FormControl('',[Validators.required,Validators.maxLength(450)])
     });
   }
@@ -54,6 +58,8 @@ private getDate(){
     const atype = this.reportForm.get('atype').value;
     const action = this.reportForm.get('action').value;
     const encounter = new NewEncounter(date,atype,action,'4');
+
+    if (this.reportForm.valid) {
    
  this.encountersService.submitEncounter(encounter)
  .subscribe((enc) => {
@@ -61,5 +67,6 @@ private getDate(){
   }, (err) =>{
     console.log('there was an error',err);
  });
+    }
   }
 }

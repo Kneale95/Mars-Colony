@@ -17,11 +17,6 @@
 	animation-timing-function: linear;
 }
 
-@font-face {
-  font-family: 'Sayian';
-  src:  url('../assets/Sayian-San/saiyan-sans-webfont.woff2') format('woff2'),
-        url('../assets/Sayian-San/saiyan-sans-webfont.woff') format('woff');
-}
 
 h1{
     padding-top: 4rem;
