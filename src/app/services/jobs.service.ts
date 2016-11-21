@@ -12,10 +12,7 @@ export default class JobsService {
 
    getJobs(): Observable<Job[]> {
     return this.http
-          .get(this.JOBS_JSON)
-          .map((res: Response) => res.json().jobs);
-              
-          
-    
+      .get(this.JOBS_JSON)
+      .map((res: Response) => res.json().jobs);
    }
 }

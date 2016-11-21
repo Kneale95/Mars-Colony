@@ -4,15 +4,15 @@
   <h3>Keep Safe From the Minions of Frieza!</h3> 
 <div class="report container">
 
-  <form [formGroup]="reportForm" class="report" >
+  <form [formGroup]="reportForm" (ngSubmit)="onSubmit($event)" class="report">
 
-    <select formControlName='atype' class="alien" required >
-      <option [value]="NO_ALIENS_SELECTED">Select Alien Type</option>
+    <select formControlName='atype' class="alien">
+      <option [value]="NO_ALIENS_SELECTED" selected disabled>Select Alien Type</option>
       <option *ngFor="let alien of marsAliens" [value]="alien.type">{{ alien.type }}</option>
     </select>
 
 
-    <textarea rows="10" class="name" placeholder="Action Taken"  formControlName="action"></textarea>
+    <textarea rows="10" name="action" class="name" placeholder="Action Taken"  formControlName="action"></textarea>
 
 
     <button type="submit" class="report-button">Submit Report</button>

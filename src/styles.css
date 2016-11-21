@@ -2,12 +2,13 @@
 .container{
     margin-left: auto;
     margin-right: auto;
-    max-width: 1240px;
+    max-width: 480px;
 }
 
 body{
     height: 100vh;
     width: 100vw;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 h1{
@@ -22,4 +23,35 @@ h2{
 h3{
     text-align: center;
     font-size: 1rem;
+}
+
+@-webkit-keyframes glowing {
+  0% {border-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
+  50% { border-color: #0094FF; -webkit-box-shadow: 0 0 10px #0094FF; }
+  100% { border-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
+}
+
+@-moz-keyframes glowing {
+  0% { bodrder-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
+  50% { border-color: #0094FF; -moz-box-shadow: 0 0 10px #0094FF; }
+  100% { border-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
+}
+
+@-o-keyframes glowing {
+  0% { border-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  50% { border-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
+  100% { border-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+}
+
+@keyframes glowing {
+  0% { border-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  50% { border-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
+  100% { border-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+}
+
+.ng-invalid {
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
 }

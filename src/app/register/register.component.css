@@ -5,6 +5,7 @@ h2{
     margin-bottom: 2rem;
     color: white;
     font-family: 'Titillium Web', sans-serif;
+    padding-top: 4rem;
 }
 
 button{
@@ -41,6 +42,7 @@ button{
     border-top: none;
     border-right: none;
     border-left:none;
+    color:grey;
     
 }
 
@@ -51,6 +53,7 @@ button{
     border-top: none;
     border-right: none;
     border-left:none;
+    color:grey;
 }
 
 .job{
@@ -60,4 +63,5 @@ button{
     border-top: none;
     border-right: none;
     border-left:none;
+    color:grey;
 }

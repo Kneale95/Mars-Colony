@@ -1,0 +1,28 @@
+.encounter-page{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+   
+}
+.encounter-feed{
+     overflow: scroll;
+}
+
+footer{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+    flex: 1 0 100%;
+    align-self: center;
+    color: white;
+    font-family:'Titillium Web', sans-serif;
+}

@@ -11,13 +11,14 @@ export  class Encounter {
 
 export class NewEncounter {
     constructor(
-         date: string,
-        colonist_id: number,
-        atype: string,
-        action: string,
-    ){}
-     
+        public date: string,
+        public atype: string,
+        public action: string,
+        public colonist_id: number
+
+    ) {}
 }
+
 export class Job {
     constructor(
         public name:string,

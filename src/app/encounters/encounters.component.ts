@@ -1,37 +1,60 @@
-import { formControlBinding } from '@angular/forms/src/directives/reactive_directives/form_control_directive';
-import { TEMPLATE_TRANSFORMS } from '@angular/compiler';
-import { format } from 'util';
-import { Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
-import { Aliens, Encounter } from '../models';
-import EncounterService from '../services/aliens.service';
+import { Encounter, NewEncounter } from '../models';
+import EncounterService from '../services/encounters.service';
+import { HostBinding,
+         trigger, transition, animate,
+         style, state  } from '@angular/core';
+
 @Component({
   selector: 'app-encounters',
   templateUrl: './encounters.component.html',
   styleUrls: ['./encounters.component.css'],
   providers: [EncounterService],
-  
+  animations: [
+    trigger('routeAnimation', [
+      state('*',
+        style({
+          opacity: 1,
+          transform: 'translateX(0)'
+        })
+      ),
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'translateX(-100%)'
+        }),
+        animate('0.2s ease-in')
+      ]),
+      transition(':leave', [
+        animate('0.5s ease-out', style({
+          opacity: 0,
+          transform: 'translateY(100%)'
+        }))
+      ])
+    ])
+  ]
 })
 
 export class EncountersComponent implements OnInit {
-  marsEncounter: Encounter[];
-  
+
+
+  encounter: NewEncounter;
+  marsEncounters: NewEncounter[];
+
 
   constructor(encounterService: EncounterService) {
-  
-   encounterService.getEncounter().subscribe((encounter) => {
-    this.marsEncounter = encounter;
-  }, (err) =>{
+    this.encounter = new NewEncounter(null, null, null, null);
+    encounterService.getEncounter().subscribe((encounters) => {
+    this.marsEncounters = encounters.sort((a, b) => {
+    return b.id - a.id;
+    })
+    .splice(0, 100);
+            }, (err) => {
     console.log(err);
-  }
-  );}
-  
-  ngOnInit() {
+    });
   }
 
-  onSubmit(event,reportForm){
-    event.preventDefault();
-   reportForm.form.controls.name.invalid=true;
-    
+  ngOnInit() {
+
   }
 }

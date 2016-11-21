@@ -2,18 +2,18 @@
 
 <h2>Register</h2>
 <div class= 'container'>
-  <form [formGroup]="registerForm" class="register">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)" class="register">
 
     <input type="text"  class="name" placeholder="name" formControlName= 'name'>
     <input type="number" class="age" placeholder="age"  formControlName= 'age'>
     
-    <select formControlName="job_id"   class="job" required >
-      <option [value]="NO_JOB_SELECTED">Select a Job</option>
+    <select formControlName="job_id"   class="job" placeholder="Select a Job" required >
+      <option [value]="NO_JOB_SELECTED" disabled selected>Select a Job</option>
       <option *ngFor="let job of marsJobs" [value]="job.id">{{ job.name }}</option>
     </select>
 
-    <a routerLink="/encounters" routerLinkActive="active"class="button">
-    <button type="submit">Check In</button></a>
+
+    <button>Check In</button>
 
   </form>
 </div>
